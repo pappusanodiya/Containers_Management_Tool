@@ -1,0 +1,40 @@
+<script>
+function lw() {
+                var cn = document.getElementById("incname").value;
+                var ci = document.getElementById("incimage").value;
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("crun").innerHTML =
+    this.responseText;
+  }
+                xhttp.open("GET", "http://13.126.12.242:3000/run?cname=" + cn + "&cimage="+ ci);
+  xhttp.send();
+}
+
+function lwps() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("cps").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "http://13.126.12.242:3000/ps");
+  xhttp.send();
+}
+
+</script>
+<h1>Containers Management Tool</h1>
+<h2>Launch Container</h2>
+
+Name <input name="cname" id="incname" />
+Image Name
+<select name="cimage" id="incimage" >
+        <option>centos</option>
+        <option>ubuntu</option>
+</select>
+<br />
+
+<div id="crun">this is my container list</div>
+<button onclick="lw()">Click On Launch</button>
+<button onclick="lwps()">Refresh</button>
+<div id="cps">this is my container list</div>
